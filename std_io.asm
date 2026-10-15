@@ -1,7 +1,12 @@
+; - - - ; Pull Functions ; - - - ;
+
 extern ascii_to_int
 extern int_to_ascii
 
 section .text
+
+; - - - ; Declare Global Functions ; - - - ;
+
 	global sys_exit_rax
 	global std_in
 	global std_in_int
@@ -65,6 +70,6 @@ std_out_int:
 	; Output integer in RAX to std_out ;
 	; - - - - - - - - - - - - - - - - -;
 
-	call int_to_ascii	; Convert string to integer
+	call int_to_ascii	; Convert integer to string
 	call std_out		; Output the result
 	ret
