@@ -10,9 +10,9 @@ extern std_in_int
 extern std_out_int
 
 section .bss
-	first_number resq 1	; Reserve 1 quadword (64 bytes) for the first number
-	second_number resq 1	; Reserve 1 quadword for the second number
-	result_number resq 1	; Reserve 1 quadeword for the resul
+	first_number resd 1	; Reserve 1 quadword (32 bytes) for the first number
+	second_number resd 1	; Reserve 1 quadword for the second number
+	result_number resd 1	; Reserve 1 quadeword for the resul
 
 section .data
 	input_msg_1 db "Input the base number: ", 0
@@ -46,15 +46,15 @@ _start:
 
 	; Calculate the addition
 	xor rax, rax			; Clear RAX
-	add rax, [first_number]		; Add the firs number to RAX
-	add rax, [second_number]	; Add the second number to RAX
-	mov [result_number], rax	; Seve the result to memory
+	add eax, [first_number]		; Add the firs number to RAX
+	add eax, [second_number]	; Add the second number to RAX
+	mov [result_number], eax	; Seve the result to memory
 
 	; Output result
 	mov rsi, output_msg
 	mov rdx, output_msg_len
 	call std_out
-	mov rax, [result_number]	; Revert the result
+	mov eax, [result_number]	; Revert the result
 	call std_out_int
 
 	; Exit function
