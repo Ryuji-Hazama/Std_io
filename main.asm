@@ -35,17 +35,17 @@ _start:
 	mov rdx, input_msg_1_len
 	call std_out			; Output the message
 	call std_in_int			; Recieve input
-	mov [first_number], rax		; Save the first number to memory
+	mov [first_number], eax		; Save the first number to memory
 
 	; Get the second input
 	mov rsi, input_msg_2
 	mov rdx, input_msg_2_len
 	call std_out
 	call std_in_int
-	mov [second_number], rax	; Save the second number to memory
+	mov [second_number], eax	; Save the second number to memory
 
 	; Calculate the addition
-	xor rax, rax			; Clear RAX
+	xor eax, eax			; Clear RAX
 	add eax, [first_number]		; Add the firs number to RAX
 	add eax, [second_number]	; Add the second number to RAX
 	mov [result_number], eax	; Seve the result to memory
